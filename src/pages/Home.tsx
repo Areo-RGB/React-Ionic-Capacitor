@@ -1,9 +1,12 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { camera, bluetooth, analytics, phonePortrait } from 'ionicons/icons';
+import { camera, bluetooth, analytics, phonePortrait, timer } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import './Home.css';
 
 const Home: React.FC = () => {
+  const history = useHistory();
+
   return (
     <IonPage>
       <IonHeader>
@@ -76,6 +79,31 @@ const Home: React.FC = () => {
               </span>
               <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
                 On-device
+              </span>
+            </div>
+          </div>
+
+          {/* Sprints Card */}
+          <div
+            className="bg-white rounded-2xl shadow-lg p-6 transform transition-all hover:scale-105 cursor-pointer"
+            onClick={() => history.push('/sprints')}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div className="bg-orange-100 p-4 rounded-full">
+                <IonIcon icon={timer} className="text-4xl text-orange-600" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800">Sprints.</h2>
+            </div>
+            <p className="text-gray-600 leading-relaxed">
+              Camera-based sprint timer using motion detection. Works as an alternative
+              to light barriers for measuring sprint times with customizable detection zones.
+            </p>
+            <div className="mt-4 flex gap-2">
+              <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
+                Motion Detection
+              </span>
+              <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
+                Timer
               </span>
             </div>
           </div>
