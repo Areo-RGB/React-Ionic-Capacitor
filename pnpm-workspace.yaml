@@ -1,0 +1,10 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+pnpm:
+  overrides:
+    rollup: 4.44.0
+  preferWorkspacePackages: true
