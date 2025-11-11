@@ -2,6 +2,8 @@
 
 A mobile-first application built with React, Ionic Framework, Capacitor, and Tailwind CSS, featuring camera preview, Bluetooth LE connectivity, and TensorFlow.js machine learning capabilities.
 
+> 💡 **Using Claude Code?** See [CLAUDE_CODE_SKILLS.md](./CLAUDE_CODE_SKILLS.md) for custom slash commands and development helpers!
+
 ## Features
 
 - 📱 **Mobile-First Design** - Optimized for mobile devices with responsive UI
