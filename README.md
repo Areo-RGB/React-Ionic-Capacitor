@@ -49,20 +49,25 @@ npm run dev
 # Visit http://localhost:5173
 ```
 
-### Android Development
+### Android Development (Physical Device Recommended)
+
+**Physical Android devices are strongly recommended** for testing Camera Preview and Bluetooth LE features, as these do not work properly in emulators.
 
 ```bash
-# Open project in Android Studio
-npm run android:open
+# Connect your Android device via USB
+# Enable USB Debugging in Developer Options
 
-# Run on Android device/emulator
+# Run on connected physical device
 npm run android:run
+
+# Or open in Android Studio
+npm run android:open
 
 # Build debug APK
 npm run android:build
 ```
 
-For detailed Android setup instructions, see [ANDROID_SETUP.md](./ANDROID_SETUP.md)
+For detailed physical device setup instructions, see [ANDROID_SETUP.md](./ANDROID_SETUP.md)
 
 ## Project Structure
 
@@ -91,7 +96,7 @@ For detailed Android setup instructions, see [ANDROID_SETUP.md](./ANDROID_SETUP.
 | `npm run test.unit` | Run unit tests |
 | `npm run test.e2e` | Run E2E tests |
 | `npm run android:sync` | Build and sync to Android |
-| `npm run android:run` | Run on device/emulator |
+| `npm run android:run` | Run on connected device |
 | `npm run android:open` | Open in Android Studio |
 | `npm run android:build` | Build debug APK |
 | `npm run android:release` | Build release APK |
@@ -116,10 +121,15 @@ Each card is styled with Tailwind CSS and features:
 
 ### Camera Preview
 
+✅ **Requires physical device** - Emulator camera support is limited
+
 Required permissions (already configured in AndroidManifest.xml):
 - `android.permission.CAMERA`
+- Camera hardware features
 
 ### Bluetooth LE
+
+⚠️ **Physical device ONLY** - Emulators do NOT support Bluetooth hardware
 
 Required permissions (already configured in AndroidManifest.xml):
 - `android.permission.BLUETOOTH`
@@ -127,8 +137,11 @@ Required permissions (already configured in AndroidManifest.xml):
 - `android.permission.BLUETOOTH_CONNECT`
 - `android.permission.BLUETOOTH_SCAN`
 - `android.permission.ACCESS_FINE_LOCATION`
+- `android.permission.ACCESS_COARSE_LOCATION`
 
 ### TensorFlow.js
+
+✅ Works on both physical devices and emulators
 
 No special permissions required. Runs in WebView.
 
@@ -138,24 +151,48 @@ No special permissions required. Runs in WebView.
 - Android Studio (for Android development)
 - JDK 17+
 - Android SDK API 33+
+- **Physical Android Device** with USB cable (strongly recommended for full feature testing)
 
-## Android Studio Setup
+## Physical Device Setup
 
-See [ANDROID_SETUP.md](./ANDROID_SETUP.md) for:
-- Emulator configuration
-- Running on devices
-- Building APKs
-- Troubleshooting
+**Important:** Camera Preview and Bluetooth LE require a physical Android device. Emulators do not support these features.
 
-## Browser Development
+**New to physical device development?** See [PHYSICAL_DEVICE_QUICK_START.md](./PHYSICAL_DEVICE_QUICK_START.md) for a 5-minute setup guide.
 
-While the native plugins require a device or emulator, you can develop the UI in a browser:
+See [ANDROID_SETUP.md](./ANDROID_SETUP.md) for complete setup guide:
+- Enabling USB Debugging
+- Connecting your device
+- Running and debugging on device
+- Building and installing APKs
+- Troubleshooting device connection
+- Device-specific tips (Samsung, Pixel, Xiaomi, etc.)
+- Wireless debugging (Android 11+)
+
+### Quick Setup
+
+1. **Enable Developer Options** on your Android device:
+   - Go to Settings > About Phone
+   - Tap Build Number 7 times
+
+2. **Enable USB Debugging**:
+   - Settings > Developer Options > USB Debugging
+
+3. **Connect and run**:
+   ```bash
+   # Connect device via USB
+   # Allow USB debugging when prompted
+   npm run android:run
+   ```
+
+## Browser Development (Limited)
+
+You can develop the UI in a browser, but native features won't work:
 
 ```bash
 npm run dev
 ```
 
-Note: Camera, Bluetooth, and some Capacitor APIs will not work in the browser. Use Android/iOS for full testing.
+**Note:** Camera, Bluetooth, and most Capacitor APIs require a physical device. Browser development is only for UI/layout work.
 
 ## Production Build
 
