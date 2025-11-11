@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonChip, IonLabel } from '@ionic/react';
 import { camera, bluetooth, analytics, phonePortrait, timer } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
@@ -10,128 +10,135 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar className="bg-gradient-to-r from-blue-600 to-purple-600">
-          <IonTitle className="text-white font-bold">Mobile App Features</IonTitle>
+        <IonToolbar color="primary">
+          <IonTitle>Mobile App Features</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className="bg-gray-50">
-        <div className="flex flex-col gap-4 p-4 max-w-md mx-auto">
+      <IonContent fullscreen className="ion-padding">
+        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
 
           {/* Camera Preview Card */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 transform transition-all hover:scale-105">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-100 p-4 rounded-full">
-                <IonIcon icon={camera} className="text-4xl text-blue-600" />
+          <IonCard>
+            <IonCardHeader>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <IonIcon icon={camera} style={{ fontSize: '48px' }} color="primary" />
+                <IonCardTitle>Camera Preview</IonCardTitle>
               </div>
-              <h2 className="text-2xl font-bold text-gray-800">Camera Preview</h2>
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              Access real-time camera preview functionality with advanced controls.
-              Capture, analyze, and process images directly from your device's camera.
-            </p>
-            <div className="mt-4 flex gap-2">
-              <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
-                Real-time
-              </span>
-              <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold">
-                High-res
-              </span>
-            </div>
-          </div>
+            </IonCardHeader>
+            <IonCardContent>
+              <p>
+                Access real-time camera preview functionality with advanced controls.
+                Capture, analyze, and process images directly from your device's camera.
+              </p>
+              <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <IonChip color="primary">
+                  <IonLabel>Real-time</IonLabel>
+                </IonChip>
+                <IonChip color="primary">
+                  <IonLabel>High-res</IonLabel>
+                </IonChip>
+              </div>
+            </IonCardContent>
+          </IonCard>
 
           {/* Bluetooth LE Card */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 transform transition-all hover:scale-105">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-purple-100 p-4 rounded-full">
-                <IonIcon icon={bluetooth} className="text-4xl text-purple-600" />
+          <IonCard>
+            <IonCardHeader>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <IonIcon icon={bluetooth} style={{ fontSize: '48px' }} color="secondary" />
+                <IonCardTitle>Bluetooth LE</IonCardTitle>
               </div>
-              <h2 className="text-2xl font-bold text-gray-800">Bluetooth LE</h2>
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              Connect to Bluetooth Low Energy devices with ease. Scan, pair, and
-              communicate with IoT devices and sensors for seamless integration.
-            </p>
-            <div className="mt-4 flex gap-2">
-              <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
-                Low Energy
-              </span>
-              <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
-                IoT Ready
-              </span>
-            </div>
-          </div>
+            </IonCardHeader>
+            <IonCardContent>
+              <p>
+                Connect to Bluetooth Low Energy devices with ease. Scan, pair, and
+                communicate with IoT devices and sensors for seamless integration.
+              </p>
+              <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <IonChip color="secondary">
+                  <IonLabel>Low Energy</IonLabel>
+                </IonChip>
+                <IonChip color="secondary">
+                  <IonLabel>IoT Ready</IonLabel>
+                </IonChip>
+              </div>
+            </IonCardContent>
+          </IonCard>
 
           {/* TensorFlow Card */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 transform transition-all hover:scale-105">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-green-100 p-4 rounded-full">
-                <IonIcon icon={analytics} className="text-4xl text-green-600" />
+          <IonCard>
+            <IonCardHeader>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <IonIcon icon={analytics} style={{ fontSize: '48px' }} color="success" />
+                <IonCardTitle>TensorFlow AI</IonCardTitle>
               </div>
-              <h2 className="text-2xl font-bold text-gray-800">TensorFlow AI</h2>
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              Leverage machine learning capabilities powered by TensorFlow.js.
-              Run AI models directly in the browser for intelligent features.
-            </p>
-            <div className="mt-4 flex gap-2">
-              <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
-                ML Powered
-              </span>
-              <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">
-                On-device
-              </span>
-            </div>
-          </div>
+            </IonCardHeader>
+            <IonCardContent>
+              <p>
+                Leverage machine learning capabilities powered by TensorFlow.js.
+                Run AI models directly in the browser for intelligent features.
+              </p>
+              <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <IonChip color="success">
+                  <IonLabel>ML Powered</IonLabel>
+                </IonChip>
+                <IonChip color="success">
+                  <IonLabel>On-device</IonLabel>
+                </IonChip>
+              </div>
+            </IonCardContent>
+          </IonCard>
 
           {/* Sprints Card */}
-          <div
-            className="bg-white rounded-2xl shadow-lg p-6 transform transition-all hover:scale-105 cursor-pointer"
-            onClick={() => history.push('/sprints')}
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-orange-100 p-4 rounded-full">
-                <IonIcon icon={timer} className="text-4xl text-orange-600" />
+          <IonCard button onClick={() => history.push('/sprints')}>
+            <IonCardHeader>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <IonIcon icon={timer} style={{ fontSize: '48px' }} color="warning" />
+                <IonCardTitle>Sprints.</IonCardTitle>
               </div>
-              <h2 className="text-2xl font-bold text-gray-800">Sprints.</h2>
-            </div>
-            <p className="text-gray-600 leading-relaxed">
-              Camera-based sprint timer using motion detection. Works as an alternative
-              to light barriers for measuring sprint times with customizable detection zones.
-            </p>
-            <div className="mt-4 flex gap-2">
-              <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
-                Motion Detection
-              </span>
-              <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">
-                Timer
-              </span>
-            </div>
-          </div>
+            </IonCardHeader>
+            <IonCardContent>
+              <p>
+                Camera-based sprint timer using motion detection. Works as an alternative
+                to light barriers for measuring sprint times with customizable detection zones.
+              </p>
+              <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <IonChip color="warning">
+                  <IonLabel>Motion Detection</IonLabel>
+                </IonChip>
+                <IonChip color="warning">
+                  <IonLabel>Timer</IonLabel>
+                </IonChip>
+              </div>
+            </IonCardContent>
+          </IonCard>
 
           {/* App Info Card */}
-          <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl shadow-lg p-6 text-white transform transition-all hover:scale-105">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-white bg-opacity-20 p-4 rounded-full">
-                <IonIcon icon={phonePortrait} className="text-4xl text-white" />
+          <IonCard color="tertiary">
+            <IonCardHeader>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <IonIcon icon={phonePortrait} style={{ fontSize: '48px', color: 'white' }} />
+                <IonCardTitle style={{ color: 'white' }}>Mobile First</IonCardTitle>
               </div>
-              <h2 className="text-2xl font-bold">Mobile First</h2>
-            </div>
-            <p className="leading-relaxed opacity-90">
-              Built with React, Ionic, and Capacitor for a native mobile experience.
-              Optimized for performance and designed with mobile-first principles.
-            </p>
-            <div className="mt-4 flex gap-2">
-              <span className="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold">
-                React
-              </span>
-              <span className="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold">
-                Ionic
-              </span>
-              <span className="px-3 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold">
-                Capacitor
-              </span>
-            </div>
-          </div>
+            </IonCardHeader>
+            <IonCardContent style={{ color: 'white' }}>
+              <p>
+                Built with React, Ionic, and Capacitor for a native mobile experience.
+                Optimized for performance and designed with mobile-first principles.
+              </p>
+              <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <IonChip style={{ backgroundColor: 'rgba(255,255,255,0.3)' }}>
+                  <IonLabel style={{ color: 'white' }}>React</IonLabel>
+                </IonChip>
+                <IonChip style={{ backgroundColor: 'rgba(255,255,255,0.3)' }}>
+                  <IonLabel style={{ color: 'white' }}>Ionic</IonLabel>
+                </IonChip>
+                <IonChip style={{ backgroundColor: 'rgba(255,255,255,0.3)' }}>
+                  <IonLabel style={{ color: 'white' }}>Capacitor</IonLabel>
+                </IonChip>
+              </div>
+            </IonCardContent>
+          </IonCard>
 
         </div>
       </IonContent>

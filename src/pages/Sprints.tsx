@@ -281,33 +281,32 @@ const Sprints: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar className="bg-gradient-to-r from-orange-600 to-red-600">
+        <IonToolbar color="warning">
           <IonButtons slot="start">
             <IonBackButton defaultHref="/home" icon={arrowBack} />
           </IonButtons>
-          <IonTitle className="text-white font-bold">Sprint Timer</IonTitle>
+          <IonTitle>Sprint Timer</IonTitle>
           <IonButtons slot="end">
             <IonButton onClick={() => setShowSettings(!showSettings)}>
-              <IonIcon icon={settings} className="text-white" />
+              <IonIcon icon={settings} />
             </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="bg-gray-50">
-        <div className="flex flex-col h-full">
+      <IonContent fullscreen>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           {/* Camera Preview Container */}
-          <div className="relative bg-black" style={{ height: '60vh' }}>
+          <div style={{ position: 'relative', backgroundColor: 'black', height: '60vh' }}>
             <div
               id="camera-preview"
-              className="w-full h-full"
-              style={{ position: 'relative' }}
+              style={{ width: '100%', height: '100%', position: 'relative' }}
             >
               {!cameraActive && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <IonIcon icon={camera} className="text-6xl mb-4 opacity-50" />
-                    <p className="text-lg opacity-75">Camera not started</p>
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ textAlign: 'center', color: 'white' }}>
+                    <IonIcon icon={camera} style={{ fontSize: '72px', marginBottom: '16px', opacity: 0.5 }} />
+                    <p style={{ fontSize: '18px', opacity: 0.75 }}>Camera not started</p>
                   </div>
                 </div>
               )}
@@ -347,7 +346,7 @@ const Sprints: React.FC = () => {
                   onMouseUp={handleZoneTouchEnd}
                   onMouseLeave={handleZoneTouchEnd}
                 >
-                  <div className="text-white text-center text-sm font-bold mt-2">
+                  <div style={{ color: 'white', textAlign: 'center', fontSize: '14px', fontWeight: 'bold', marginTop: '8px' }}>
                     {detectionCount === 0 && 'Detection Zone'}
                     {detectionCount === 1 && 'Started!'}
                     {detectionCount === 2 && 'Stopped!'}
@@ -362,7 +361,7 @@ const Sprints: React.FC = () => {
 
           {/* Settings Panel */}
           {showSettings && (
-            <IonCard className="m-2">
+            <IonCard style={{ margin: '8px' }}>
               <IonCardHeader>
                 <IonCardTitle>Detection Settings</IonCardTitle>
               </IonCardHeader>
@@ -406,13 +405,13 @@ const Sprints: React.FC = () => {
           )}
 
           {/* Timer Display */}
-          <div className="flex-1 p-4">
-            <IonCard className="bg-gradient-to-br from-orange-600 to-red-600 text-white">
-              <IonCardContent className="text-center py-6">
-                <div className="text-5xl font-bold mb-2">
+          <div style={{ flex: 1, padding: '16px' }}>
+            <IonCard color="warning">
+              <IonCardContent style={{ textAlign: 'center', padding: '24px 16px' }}>
+                <div style={{ fontSize: '48px', fontWeight: 'bold', marginBottom: '8px' }}>
                   {formatTime(finalTime !== null ? finalTime : elapsedTime)}
                 </div>
-                <div className="text-lg opacity-90">
+                <div style={{ fontSize: '18px', opacity: 0.9 }}>
                   {detectionCount === 0 && 'Waiting for start...'}
                   {detectionCount === 1 && timerRunning && 'Timer Running!'}
                   {detectionCount === 2 && 'Sprint Complete!'}
@@ -421,47 +420,47 @@ const Sprints: React.FC = () => {
             </IonCard>
 
             {/* Control Buttons */}
-            <div className="flex gap-2 mt-4">
+            <div style={{ display: 'flex', gap: '8px', marginTop: '16px', flexWrap: 'wrap' }}>
               {!cameraActive ? (
-                <IonButton expand="block" onClick={startCamera} className="flex-1">
+                <IonButton expand="block" onClick={startCamera} style={{ flex: 1 }}>
                   <IonIcon icon={camera} slot="start" />
                   Start Camera
                 </IonButton>
               ) : (
-                <IonButton expand="block" onClick={stopCamera} color="danger" className="flex-1">
+                <IonButton expand="block" onClick={stopCamera} color="danger" style={{ flex: 1 }}>
                   <IonIcon icon={stop} slot="start" />
                   Stop Camera
                 </IonButton>
               )}
 
               {cameraActive && !detectionActive && (
-                <IonButton expand="block" onClick={startDetection} color="success" className="flex-1">
+                <IonButton expand="block" onClick={startDetection} color="success" style={{ flex: 1 }}>
                   <IonIcon icon={play} slot="start" />
                   Start Detection
                 </IonButton>
               )}
 
               {detectionActive && (
-                <IonButton expand="block" onClick={stopDetection} color="warning" className="flex-1">
+                <IonButton expand="block" onClick={stopDetection} color="warning" style={{ flex: 1 }}>
                   <IonIcon icon={stop} slot="start" />
                   Stop Detection
                 </IonButton>
               )}
 
               {(finalTime !== null || elapsedTime > 0) && (
-                <IonButton expand="block" onClick={resetTimer} color="medium" className="flex-1">
+                <IonButton expand="block" onClick={resetTimer} color="medium" style={{ flex: 1 }}>
                   Reset
                 </IonButton>
               )}
             </div>
 
             {/* Instructions */}
-            <IonCard className="mt-4">
+            <IonCard style={{ marginTop: '16px' }}>
               <IonCardHeader>
-                <IonCardTitle className="text-lg">How to Use</IonCardTitle>
+                <IonCardTitle>How to Use</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <ol className="list-decimal list-inside text-sm space-y-2">
+                <ol style={{ listStylePosition: 'inside', fontSize: '14px', paddingLeft: '0' }}>
                   <li>Start the camera</li>
                   <li>Adjust the detection zone by dragging it</li>
                   <li>Fine-tune sensitivity in settings if needed</li>
